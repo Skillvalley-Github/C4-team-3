@@ -4,16 +4,16 @@ import {Link} from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className='w-[23%]  bg-[#1D2540] '>
+    <div className='w-1/4  bg-[#1D2540] '>
       <div className='flex flex-col items-center h-[100%]'>
-       <Link to="Profile"><div className='h-[35%] py-8'>
+       <Link to="Profile"><div className='h-1/3 py-8'>
 <div className='w-28 h-28'>
           <img  src={profile} alt="profile" ></img> 
         </div>
         
         <p className='text-white '>Operation Trinity</p>
         </div></Link> 
-        <div className='h-full bg-[#253659] flex flex-col justify-between w-full rounded-tr-[5rem] text-left  '>
+        <div className='h-2/3 bg-[#253659] flex flex-col justify-between w-full rounded-tr-[5rem] text-left  '>
              <div className='flex flex-col  pt-6 text-white gap-6  lg:px-12 '>
 
              <Link to ="/Jobs"> <div className='flex items-center p-2 hover:bg-[#1D2540] rounded-lg '>
