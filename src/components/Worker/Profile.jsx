@@ -13,7 +13,7 @@ const Profile = () => {
             </div>
             <div className="col-md-6">
               <div className="profile-head">
-                <h2>John Doe</h2>
+                <h2>John Dick</h2>
               </div>
               <div className="flex justify-start gap-3">
 
