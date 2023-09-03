@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Jobs = () => {
+const Jobs = ({jobs}) => {
+  console.log(jobs)
   return (
     <div>Jobs</div>
   )
