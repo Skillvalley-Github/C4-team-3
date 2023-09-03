@@ -26,6 +26,27 @@ const Profile = () => {
               </button>
             </div>
           </div>
+          {/* Center the fields lower in the white box */}
+          <div className="row justify-content-center"style={{marginBottom:"25px"}}>
+            <div className="col-md-12 text-center" >
+              <div className="profile-field" style={{ marginBottom: "20px" }}>
+                <label>ID:</label>
+                <span>123456</span>
+              </div>
+              <div className="profile-field" style={{ marginBottom: "20px" }}>
+                <label>Name:</label>
+                <span>John Doe</span>
+              </div>
+              <div className="profile-field" style={{ marginBottom: "20px" }}>
+                <label>DOB:</label>
+                <span>01/01/1990</span>
+              </div>
+              <div className="profile-field" style={{ marginBottom: "20px" }}>
+                <label>Aadhar Card:</label>
+                <span>1234-5678-9012</span>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
