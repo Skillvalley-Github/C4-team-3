@@ -8,7 +8,7 @@ import {
   Content
 } from './components/Worker'
 import { Routes, Route } from 'react-router-dom'
-import supabase from './api'
+// import supabase from './api'
 import { useState, useEffect } from 'react'
 
 function App () {
