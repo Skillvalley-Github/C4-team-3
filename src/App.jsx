@@ -5,7 +5,7 @@ function App () {
     <div className='flex h-screen w-full'>
       <Sidebar />
       <Routes>
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile' index element={<Profile />} />
         <Route path='/jobs' element={<Jobs />} />
         <Route path='/attendance' element={<Attendance />} />
         <Route path='/payment' element={<Payment />} />
