@@ -1,38 +1,50 @@
-import React from "react";
-import User from "../../assets/images/User.png";
-import "../../App.css";
+import User from '../../assets/images/User.png'
+import { useEffect, useState } from 'react'
+import '../../App.css'
 
-const Profile = (props) => {
+export default function Profile (props) {
+  const [worker, setWorker] = useState()
   // Destructure props to access custom data
-  const { name, workerId, dob, panCardNo, bankAccountNo } = props;
+
+  useEffect(() => {
+    setWorker(props)
+    console.log(worker)
+  }, [props])
 
   return (
-    <div className="centered-box-container">
-      <div className="centered-box">
-        <form method="" className="full">
-          <div className="top full ">
-            <div className="left">
-              <img style={{width:300,height:350}} src={User} alt="userimage" />
+    <div className='centered-box-container'>
+      <div className='centered-box'>
+        <form method='' className='full'>
+          <div className='top full '>
+            <div className='left'>
+              <img
+                style={{ width: 300, height: 350 }}
+                src={User}
+                alt='userimage'
+              />
             </div>
-            <div className="right">
-              <div className="profile-head">
-                <p>Name: {name} John Doe</p>
+            {/* <div className='right'>
+              <div className='profile-head'>
+                <p>{`Name: ${worker.first_name} ${worker.last_name}`}</p>
               </div>
-              <div className="profile-id">
-                <p>Worker ID: {workerId} 123456789</p>
+              <div className='profile-id'>
+                <p>Worker ID: {worker.mgnrega_id}</p>
               </div>
-              <div className="profile-id">
-                <p>DOB: {dob} 04/09/1985</p>
+              <div className='profile-id'>
+                <p>DOB: {worker.dob}</p>
               </div>
-              <div className="profile-id">
-                <p>Pan Card No: {panCardNo}123456789</p>
+              <div className='profile-id'>
+                <p>Email: {worker.email_id}</p>
               </div>
-              <div className="profile-id">
-                <p>Bank Account No: {bankAccountNo}123456789</p>
+              <div className='profile-id'>
+                <p>Aadhaar No: {worker.aadhar_no}</p>
               </div>
-            </div>
-            <div className="col-md-2">
-              <button className="btn btn-primary edit-profile-button">
+              <div className='profile-id'>
+                <p>Bank Account No: {worker.bank_account_no}</p>
+              </div>
+            </div> */}
+            <div className='col-md-2'>
+              <button className='btn btn-primary edit-profile-button'>
                 Edit Profile
               </button>
             </div>
@@ -40,7 +52,5 @@ const Profile = (props) => {
         </form>
       </div>
     </div>
-  );
-};
-
-export default Profile;
+  )
+}
