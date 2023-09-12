@@ -8,7 +8,6 @@ export default function Profile (props) {
 
   useEffect(() => {
     setWorker(props)
-    console.log(worker)
   }, [props])
 
   return (
