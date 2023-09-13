@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import '../../App.css'
 
 export default function Profile (props) {
+
   const [worker, setWorker] = useState()
   // Destructure props to access custom data
 
@@ -51,5 +52,5 @@ export default function Profile (props) {
         </form>
       </div>
     </div>
-  )
+ )
 }

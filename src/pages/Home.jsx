@@ -2,6 +2,7 @@ import React from 'react'
 import img1 from '../assets/images/full.jpg';
 import './Home.css';
 import img2 from '../assets/images/bg.jpg';
+
 export const Home = () => {
   return (
     <div className='w-[100%] '>
@@ -63,8 +64,3 @@ export const Home = () => {
   )
 }
 
-import React from 'react'
-
-export const Home = () => {
-  return <div>Home world</div>
-}

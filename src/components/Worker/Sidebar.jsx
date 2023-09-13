@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
-    <div className='w-1/4  bg-[#1D2540] '>
+    <div className='w-1/4  bg-[#1D2540] h-screen '>
       <div className='flex flex-col items-center h-[100%]'>
         <Link to='/profile'>
           <div className='h-1/3 py-8'>
