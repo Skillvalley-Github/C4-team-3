@@ -31,5 +31,5 @@ export default function Profile(props) {
         </form>
       </div> */}
     </div>
-  );
+  )
 }
