@@ -9,7 +9,6 @@ import {
   Payment,
   Tasks,
   Attendance,
-  Content
 } from '../components/Worker'
 import supabase from '../api'
 
@@ -43,7 +42,6 @@ export const Dashboard = () => {
       ) : (
         <Navigate replace to='/' />
       )}
-      <Content />
     </>
   )
 }

@@ -10,7 +10,6 @@ export const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
     let { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -18,6 +17,7 @@ export const Auth = () => {
     if (data.user !== null) {
       window.location.href = "/profile";
     } else {
+      console.log(error);
       alert(error.message)
     }
   };
