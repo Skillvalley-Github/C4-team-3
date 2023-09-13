@@ -15,27 +15,27 @@
   margin-left: 185px;
 } */
 
-.centered-box-container {
+/* .centered-box-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
-}
+} */
 
 .centered-box {
-  width: 800px;
+  /* width: 800px;
   height: 600px;
   background-color: #ffffff;
   border: 1px solid #d1d1d1;
   padding: 20px;
   transform: translateZ(
     20px
-  ); /* Adjust the translateZ value for the desired pop-out effect */
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  );  */
+  /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease-in-out;
   position: absolute;
-  left: 105px;
+  left: 105px; */
 }
 
 /* Style the Edit Profile button */
@@ -86,3 +86,53 @@ display: flex;
 
 }
 
+.left img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Add a transition to the Edit Profile button */
+.edit-profile-button {
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.edit-profile-button:hover {
+  transform: scale(1.1);
+}
+
+/* Use a gradient background for the profile page */
+body {
+  background: linear-gradient(to right, #f2f2f2, #ffffff);
+}
+
+/* Add a shadow to the profile box */
+.centered-box {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Use icons for the profile details */
+.profile-id::before {
+  content: url('icon-url'); /* Replace 'icon-url' with the actual URL of the icon */
+  margin-right: 10px;
+}
+.centered-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: #f2f2f2; /* Add a background color to the container */
+}
+
+.centered-box {
+  width: 800px;
+  height: 600px;
+  background: linear-gradient(to right, #ffffff, #f2f2f2); /* Use a gradient background for the box */
+  border: 3px solid #2b1818; /* Add a border to the box */
+  padding: 40px; /* Add some padding to the box */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); /* Add a box shadow to the box */
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  left: 105px;
+  border-radius: 10px; /* Add rounded corners to the box */
+}
