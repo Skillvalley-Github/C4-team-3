@@ -14,7 +14,7 @@ function App () {
     setJobs(data)
   }
   return (
-    <div className='flex h-screen w-full'>
+    <div className='w-full'>
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/auth' element={<Auth />} />
