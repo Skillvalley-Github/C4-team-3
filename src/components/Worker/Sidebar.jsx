@@ -47,10 +47,11 @@ const Sidebar = () => {
               </Link>
             ))}
           </div>
-
-          <button className="bg-[#1D2540] py-2 px-4 mx-auto mb-4  rounded-lg text-white text-center  ">
-            Logout 👋
-          </button>
+          <a href="/">
+            <button className="bg-[#1D2540] py-2 px-4 mx-auto mb-4  rounded-lg text-white text-center  ">
+              Logout 👋
+            </button>
+          </a>
         </div>
       </div>
     </div>

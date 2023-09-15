@@ -13,8 +13,10 @@ import {
 import supabase from '../api'
 
 export const Dashboard = () => {
+  console.log("called")
   const [worker, setWorkers] = useState({}) //worker state
   const { dashboard } = useParams()
+  console.log(dashboard)
 
   useEffect(() => {
     async function fetchData () {
