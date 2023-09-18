@@ -47,6 +47,6 @@ export const Dashboard = () => {
       ) : (
         <Navigate replace to='/' />
       )}
-    </>
+    </div>
   )
 }

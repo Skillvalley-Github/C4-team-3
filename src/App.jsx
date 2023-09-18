@@ -6,7 +6,7 @@ import Protected from "./components/Protected";
 
 function App() {
   const [jobs, setJobs] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     getJobs();
