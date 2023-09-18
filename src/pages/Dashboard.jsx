@@ -12,6 +12,7 @@ import {
   Content
 } from '../components/Worker'
 import supabase from '../api'
+import Addjobs from '../components/Admin/Addjobs'
 
 export const Dashboard = () => {
   const [worker, setWorkers] = useState({}) //worker state
@@ -28,12 +29,14 @@ export const Dashboard = () => {
   }, [])
 
   return (
-    <>
+    <div className='flex'>
       <Sidebar />
       {dashboard === 'profile' ? (
         <Profile worker={worker} />
       ) : dashboard === 'jobs' ? (
         <Jobs />
+      ) : dashboard === 'addjobs' ? (
+        <Addjobs />
       ) : dashboard === 'payment' ? (
         <Payment />
       ) : dashboard === 'tasks' ? (
@@ -43,7 +46,7 @@ export const Dashboard = () => {
       ) : (
         <Navigate replace to='/' />
       )}
-      <Content />
-    </>
+      {/* <Content /> */}
+    </div>
   )
 }
