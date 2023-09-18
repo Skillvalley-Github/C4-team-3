@@ -9,14 +9,15 @@ import {
   Payment,
   Tasks,
   Attendance,
-  Content
 } from '../components/Worker'
 import supabase from '../api'
 import Addjobs from '../components/Admin/Addjobs'
 
 export const Dashboard = () => {
+  console.log("called")
   const [worker, setWorkers] = useState({}) //worker state
   const { dashboard } = useParams()
+  console.log(dashboard)
 
   useEffect(() => {
     async function fetchData () {
@@ -46,7 +47,6 @@ export const Dashboard = () => {
       ) : (
         <Navigate replace to='/' />
       )}
-      {/* <Content /> */}
-    </div>
+    </>
   )
 }
