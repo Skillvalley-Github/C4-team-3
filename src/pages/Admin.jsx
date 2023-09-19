@@ -1,7 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { workerLinks } from '../utils/sidelinks'
-
+import { adminLinks } from '../utils/sidelinks'
 // Importing all the components
 import {
   Sidebar,
@@ -9,15 +8,15 @@ import {
   Jobs,
   Payment,
   Tasks,
-  Attendance
+  Attendance,
 } from '../components/Worker'
 import supabase from '../api'
 import Addjobs from '../components/Admin/Addjobs'
 
-export const Dashboard = () => {
+export const Admin = () => {
   const [worker, setWorkers] = useState({}) //worker state
   const { dashboard } = useParams()
-  // console.log(dashboard)
+  console.log(dashboard)
 
   useEffect(() => {
     async function fetchData () {
@@ -31,8 +30,8 @@ export const Dashboard = () => {
 
   return (
     <div className='flex'>
-      <Sidebar links={workerLinks} />
-      {dashboard === 'profile' ? (
+      <Sidebar links={adminLinks}/>
+      {dashboard === '/admin' ? (
         <Profile worker={worker} />
       ) : dashboard === 'jobs' ? (
         <Jobs />
@@ -45,7 +44,7 @@ export const Dashboard = () => {
       ) : dashboard === 'attendance' ? (
         <Attendance />
       ) : (
-        <Navigate replace to='/' />
+        <Navigate replace to='/auth' />
       )}
     </div>
   )
