@@ -7,15 +7,16 @@ import {
   Jobs,
   Payment,
   Attendance,
+  Dashboard
 } from "../components/Worker";
 import { TopNavbar } from "../components/TopNavbar";
 import supabase from "../api";
 
-export const Dashboard = () => {
+export const Worker = () => {
   const [worker, setWorkers] = useState({}); //worker state
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const { dashboard } = useParams();
+  const { view } = useParams();
 
   useEffect(() => {
     async function fetchData() {
@@ -33,17 +34,21 @@ export const Dashboard = () => {
       <div className="flex flex-1 flex-col md:pl-64">
         <TopNavbar setSidebarOpen={setSidebarOpen} />
         <main>
-          {dashboard === "profile" ? (
+          {view === "profile" ? (
             <Profile
               worker={worker}
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
             />
-          ) : dashboard === "jobs" ? (
+          ) : view === "jobs" ? (
             <Jobs />
-          ) : dashboard === "payment" ? (
+          ) : view === "payment" ? (
             <Payment />
-          ) : dashboard === "attendance" ? (
+          ) : view === "dashboard" ? (
+            <Dashboard/>
+          ) : view === "payment" ? (
+            <Payment />
+          ) : view === "attendance" ? (
             <Attendance />
           ) : (
             <Navigate replace to="/" />

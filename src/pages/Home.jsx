@@ -2,6 +2,7 @@ import React from "react";
 import img1 from "../assets/images/full.jpg";
 import "./Home.css";
 import img2 from "../assets/images/bg.jpg";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -11,17 +12,12 @@ export const Home = () => {
           <div className="flex justify-between">
             <div className="logo"></div>
             <div className="flex gap-4">
-              <a href="">
-                <div className="text-white p-2">Home</div>
-              </a>
-              <a href="">
-                <div className="text-white p-2">Home</div>
-              </a>
-              <a href="/auth">
+             
+              <Link to="/auth">
               <button className="bg-[#047857] rounded-lg px-2 py-2 text-white">
                 Login
               </button>
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

@@ -1,5 +1,5 @@
-import { Dashboard, Auth, Home } from './pages'
-import { Routes, Route } from 'react-router-dom'
+import { Worker, Auth, Home } from './pages'
+import { Routes, Route, } from 'react-router-dom'
 import supabase from './api'
 import { useState, useEffect } from 'react'
 import Protected from './components/Protected'
@@ -30,10 +30,10 @@ function App() {
           }
         />
         <Route
-          path='/:dashboard'
+          path='/:view'
           element={
             <Protected isSignedIn={isLoggedIn}>
-              <Dashboard />
+              <Worker/>
             </Protected>
           }
         />

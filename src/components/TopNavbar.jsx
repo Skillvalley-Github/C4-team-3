@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -7,9 +8,8 @@ function classNames(...classes) {
 }
 
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Your Profile", href: "/profile" },
+  { name: "Sign out", href: "/" },
 ];
 
 
@@ -81,15 +81,15 @@ export const TopNavbar = ({setSidebarOpen}) => {
                     {userNavigation.map((item) => (
                       <Menu.Item key={item.name}>
                         {({ active }) => (
-                          <a
-                            href={item.href}
+                          <Link
+                            to={item.href}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         )}
                       </Menu.Item>
                     ))}
