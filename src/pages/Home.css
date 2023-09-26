@@ -1,7 +1,0 @@
-.hero{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.874), rgba(0, 0, 0, 0.683)), url('../assets//images//full.jpg');
-    max-width: 100%;
-   background-size: cover;
-}

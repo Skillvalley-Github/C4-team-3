@@ -1,95 +1,152 @@
-import React from "react";
 import img1 from "../assets/images/full.jpg";
-import "./Home.css";
-import img2 from "../assets/images/bg.jpg";
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 
-export const Home = () => {
+const navigation = [
+  { name: "Features", href: "#feature" },
+  { name: "Contact", href: "#contact" },
+];
+
+
+export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className="w-[100%] ">
-      <div className="h-screen hero w-[100%] ">
-        <nav className="h-1/6 p-4">
-          <div className="flex justify-between">
-            <div className="logo"></div>
-            <div className="flex gap-4">
-             
-              <Link to="/auth">
-              <button className="bg-[#047857] rounded-lg px-2 py-2 text-white">
-                Login
+    <div className="relative isolate overflow-hidden bg-gray-900">
+      <img
+        src={img1}
+        alt=""
+        className="absolute inset-0 -z-10 h-full w-full object-cover brightness-50"
+      />
+   
+      <div className="px-6 lg:px-8">
+        <nav
+          className="flex items-center justify-between pt-6"
+          aria-label="Global"
+        >
+          <div className="flex lg:flex-1">
+            <Link to="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Your Company</span>
+              <img className="h-8" src={logo} alt="logo" />
+            </Link>
+          </div>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm font-semibold leading-6 text-white"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <Link
+              to="/auth"
+              className="text-sm font-semibold leading-6 text-white"
+            >
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </nav>
+        <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+          <Dialog.Panel
+            focus="true"
+            className="fixed inset-0 z-10 overflow-y-auto bg-gray-900 px-6 py-6 lg:hidden"
+          >
+            <div className="flex items-center justify-between">
+              <Link to="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">Your Company</span>
+                <img className="h-8" src={logo} alt="logo" />
+              </Link>
+              <button
+                type="button"
+                className="-m-2.5 rounded-md p-2.5 text-gray-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="sr-only">Close menu</span>
+                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
               </button>
+            </div>
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-gray-500/25">
+                <div className="space-y-2 py-6">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-400/10"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+                <div className="py-6">
+                  <Link
+                    to="/auth"
+                    className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-white hover:bg-gray-400/10"
+                  >
+                    Log in
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Dialog.Panel>
+        </Dialog>
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+            <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
+              Launching redefined way of.{' '}
+              <Link to="https://nrega.nic.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white">
+                <span className="absolute inset-0" aria-hidden="true" />
+                MGNREGA 2.0 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>
-        </nav>
-        <div className="flex flex-col items-center text-center justify-center">
-          <h1 className="text-7xl text-[#fff] font-bold p-8 ">
-            Empowering people who help people
-          </h1>
-          <button className="bg-[#047857] rounded-lg px-2 py-2 text-white">
-            Read More
-          </button>
-        </div>
-      </div>
-      <div className="bg-[#fffbeb] h-[600px] px-28 pt-8 ">
-        <div className="text-center flex flex-col justify-center ">
-          <p className="text-black font-bold text-6xl">
-            Monitor your entire{" "}
-            <span className="text-[#047857]"> buisness</span> for security
-            vulnerabilities
-          </p>
-          <p className="px-40 py-8 text-[#737373]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, odio
-            iure! Eum hic obcaecati repellendus repudiandae nulla eos veniam
-            quia
-          </p>
-        </div>
-
-        <div className="flex justify-center align-center h-[200px] bg-[#fef3c7] rounded-[4rem] p-8 mt-8">
-          <div className="p-4 ">
-            <p className="text-2xl font-bold pb-2">Scale with recipes</p>
-            <p className="text-[#737373] text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae quam neque itaque incidunt nul
+          <div className="text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+              Empowering people who help people
+            </h1>
+            <p className=" text-left mt-6 text-lg min-w-20 overflow-hidden text-gray-300">
+              An Act to provide for the enhancement of livelihood security of
+              the households in rural areas of the country by providing at least
+              one hundred days of guaranteed wage employment in every financial
+              year to every household whose adult members volunteer to do
+              unskilled manual work and for matters connected therewith or
+              incidental thereto.
             </p>
-          </div>
-          <div className="p-4 ">
-            <p className="text-2xl font-bold pb-2">Scale with recipes</p>
-            <p className="text-[#737373] text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae quam neque itaque incidunt nul
-            </p>
-          </div>
-          <div className="p-4 ">
-            <p className="text-2xl font-bold pb-2">Scale with recipes</p>
-            <p className="text-[#737373] text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae quam neque itaque incidunt nul
-            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link
+                to="/auth"
+                className="rounded-md bg-indigo-500 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+              >
+                Get started
+              </Link>
+              <Link
+                to="#feature"
+                className="text-base font-semibold leading-7 text-white"
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="h-[450px] flex ">
-        <div className=" w-[50%]  flex ">
-          <img className="w-full h-full " src={img2} alt="about-img"></img>
-        </div>
-        <div className=" w-[50%] p-4 bg-gray-200">
-          <div className="flex flex-col p-8 ">
-            <p className="text-[#047857] text-5xl font-bold">
-              lorem ipsum lorem ipsum
-            </p>
-            <p className="py-8 w-[70%] text-[#737373]">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-              laboriosam ducimus sit aspernatur temporibus nemo non aut sunt
-              dignissimos, dicta explicabo error nam recusandae, Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Molestias suscipit
-              in, quisquam veniam nobis ut aliquid illo a sequi corporis, quis
-              aspernatur obcaecati dolores blanditiis sint ipsum, cumque error
-              amet.
-            </p>
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
-};
+}

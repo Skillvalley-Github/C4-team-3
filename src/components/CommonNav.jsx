@@ -1,13 +1,9 @@
-import React from "react";
 
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 const commonNavigation = [
   { name: "Home", href: "/" },
 ];
@@ -21,6 +17,18 @@ export default function CommonNav() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 justify-between">
                 <div className="flex">
+                <div className="flex flex-shrink-0 items-center">
+                  <img
+                    className="block h-8 w-auto lg:hidden"
+                    src={logo}
+                    alt="Your Company"
+                  />
+                  <img
+                    className="hidden h-8 w-auto lg:block"
+                    src={logo}
+                    alt="Your Company"
+                  />
+                </div>
                   <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                     {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                     {commonNavigation.map((item, index) => (
