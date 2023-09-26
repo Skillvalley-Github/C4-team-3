@@ -3,6 +3,6 @@ import "../../App.css";
 
 export default function Profile({ setSidebarOpen }) {
   return (
-    <div>hello</div>
+    <div>dashboard</div>
   );
 }
