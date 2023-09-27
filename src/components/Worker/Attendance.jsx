@@ -1,6 +1,6 @@
 import Dropdown from "../Dropdown";
 import { useState } from "react";
-import { district } from "../../utils/locationDrops";
+import { dropDown } from "../../utils/locationDrops";
 import { TableRow } from "../TableRow";
 const cards = [
   { name: "District" },
@@ -53,7 +53,7 @@ const Attendance = () => {
         <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, index) => (
             <div key={index}>
-              <Dropdown options={district} label={card.name} />
+              <Dropdown options={dropDown[`${card.name}`]} label={card.name} />
             </div>
           ))}
         </div>

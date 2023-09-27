@@ -1,12 +1,25 @@
-export const district = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-  { id: 7, name: "Caroline Schultz" },
-  { id: 8, name: "Mason Heaney" },
-  { id: 9, name: "Claudie Smitham" },
-  { id: 10, name: "Emil Schaefer" },
+const District = [
+  { id: 1, name: "Kolkata" },
+  { id: 2, name: "Bardoli" },
+  { id: 3, name: "Malad" },
+  
 ];
+const Block = [
+  { id: 1, name: "Bachhwara" },
+  { id: 2, name: "Surat" },
+  { id: 3, name: "Andheri" },
+
+];
+const Panchayat = [
+  { id: 1, name: "Kedrabad" },
+  { id: 2, name: "Ahmadabad" },
+  { id: 3, name: "Shirdi" },
+  { id: 4, name: "Rameswaram" },
+  { id: 5, name: "Bengaluru" },
+];
+export const dropDown = {
+  "District": District,
+  "Block": Block,
+  "Panchayat": Panchayat,
+}
+
