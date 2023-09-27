@@ -10,6 +10,7 @@ import {
   Dashboard
 } from "../components/Worker";
 import { TopNavbar } from "../components/TopNavbar";
+import NotFound from "../components/NotFound";
 import supabase from "../api";
 
 export const Worker = () => {
