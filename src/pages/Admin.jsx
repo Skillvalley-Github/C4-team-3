@@ -1,6 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
+import { adminLinks } from '../utils/sidelinks'
 // Importing all the components
 import {
   Sidebar,
@@ -13,8 +13,7 @@ import {
 import supabase from '../api'
 import Addjobs from '../components/Admin/Addjobs'
 
-export const Dashboard = () => {
-  console.log("called")
+export const Admin = () => {
   const [worker, setWorkers] = useState({}) //worker state
   const { dashboard } = useParams()
   console.log(dashboard)
@@ -31,8 +30,8 @@ export const Dashboard = () => {
 
   return (
     <div className='flex'>
-      <Sidebar />
-      {dashboard === 'profile' ? (
+      <Sidebar links={adminLinks}/>
+      {dashboard === '/admin' ? (
         <Profile worker={worker} />
       ) : dashboard === 'jobs' ? (
         <Jobs />
@@ -45,7 +44,7 @@ export const Dashboard = () => {
       ) : dashboard === 'attendance' ? (
         <Attendance />
       ) : (
-        <Navigate replace to='/' />
+        <Navigate replace to='/auth' />
       )}
     </div>
   )

@@ -4,5 +4,6 @@ import Payment from "./Payment";
 import Attendance from "./Attendance";
 import Jobs from "./Jobs";
 import Profile from "./Profile";
+import Dashboard from "./Dashboard";
 
-export { Sidebar, Tasks, Payment, Attendance, Jobs, Profile};
+export { Dashboard, Sidebar, Tasks, Payment, Attendance, Jobs, Profile};
