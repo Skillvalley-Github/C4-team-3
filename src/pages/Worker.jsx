@@ -34,7 +34,7 @@ export const Worker = () => {
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex flex-1 flex-col md:pl-64">
         <TopNavbar setSidebarOpen={setSidebarOpen} />
-        <main>
+        <>
           {view === "profile" ? (
             <Profile
               worker={worker}
@@ -54,7 +54,7 @@ export const Worker = () => {
           ) : (
             <Navigate replace to="/" />
           )}
-        </main>
+        </>
       </div>
     </>
   );
