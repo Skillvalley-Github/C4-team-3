@@ -1,34 +1,41 @@
-import React from "react";
 import { useState } from "react";
 import { TableRow } from "../TableRow";
 const tableData = [
   {
     id: 1,
-    name: "Amristsrovar",
+    Work: "Amristsrovar",
+    Location: "Bachhwara, Bihar",
+    Duration: "3 months",
     href: "#",
-    amount: "NA",
-    status: "absent",
-    date: "July 11, 2020",
-    datetime: "2020-07-11",
+    Status: "enrolled",
+    Start: "July 11, 2020",
   },
   {
     id: 2,
-    name: "Nahar widening",
+    Work: "Nahar widening",
     href: "#",
-    amount: "20,000",
-    status: "present",
-    date: "Aug, 12, 2023",
-    datetime: "2020-07-11",
+    Location: "Amristsar, Punjab",
+    Duration: "2 months",
+    Status: "unenrolled",
+    Start: "Aug, 12, 2023",
   },
+ 
 ];
 const tableHeading = [
-  { name: "Work Name" },
-  { name: "Locations"},
-  { name: "Duration"},
-  { name: "Start Date"},
-  { name: "Enroll" },
+  { name: "Work" },
+  { name: "Location" },
+  { name: "Duration" },
+  { name: "Start" },
+  { name: "Status" },
 ];
-const Jobs = ({ jobs }) => { const [foundAttendance, setFoundAttendance] = useState(tableData); //worker state
+
+const statusStyles = {
+  enrolled: "bg-green-100 text-green-800",
+  unenrolled: "bg-red-100 text-gray-800",
+};
+
+const Jobs = ({ jobs }) => {
+  const [foundAttendance, setFoundAttendance] = useState(tableData); //worker state
   const cards = [
     { label: "Your presence", value: "8/10 Day" },
     { label: "Labours", value: "20" },
@@ -85,7 +92,11 @@ const Jobs = ({ jobs }) => { const [foundAttendance, setFoundAttendance] = useSt
           </div>
         </div>
       ) : (
-        <TableRow tableHeading={tableHeading} tableData={tableData} />
+        <TableRow
+          tableHeading={tableHeading}
+          tableData={tableData}
+          statusStyles={statusStyles}
+        />
       )}
     </main>
   );

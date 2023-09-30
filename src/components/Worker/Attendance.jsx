@@ -11,28 +11,29 @@ const cards = [
 const tableData = [
   {
     id: 1,
-    name: "Amristsrovar",
+    Work: "Amristsrovar",
     href: "#",
-    amount: "NA",
-    status: "absent",
-    date: "July 11, 2020",
-    datetime: "2020-07-11",
+    Status: "absent",
+    Date: "July 11, 2020",
   },
   {
     id: 2,
-    name: "Nahar widening",
+    Work: "Nahar widening",
     href: "#",
-    amount: "20,000",
-    status: "present",
-    date: "Aug, 12, 2023",
-    datetime: "2020-07-11",
+    Status: "present",
+    Date: "Aug, 12, 2023",
   },
 ];
 const tableHeading = [
-  { name: "Work Name" },
+  { name: "Work" },
   { name: "Date" },
   { name: "Status" },
 ];
+
+const statusStyles = {
+  present: "bg-green-100 text-green-800",
+  absent: "bg-red-100 text-gray-800",
+};
 
 const Attendance = () => {
   const [foundAttendance, setFoundAttendance] = useState(tableData); //worker state
@@ -71,7 +72,7 @@ const Attendance = () => {
           </div>
         </div>
       ) : (
-        <TableRow tableHeading={tableHeading} tableData={tableData} />
+        <TableRow tableHeading={tableHeading} tableData={tableData} statusStyles={statusStyles} />
       )}
     </main>
   );

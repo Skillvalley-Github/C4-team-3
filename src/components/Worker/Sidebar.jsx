@@ -1,7 +1,7 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo.png";
 import {
   CalendarIcon,
   FolderIcon,
@@ -22,6 +22,13 @@ function classNames(...classes) {
 }
 
 export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
+  const [active, setActive] = useState(0);
+
+  function handleActive(index) {
+    navigation[active].current = false;
+    navigation[index].current = true;
+    setActive(index);
+  }
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -77,18 +84,18 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </Transition.Child>
                 <div className="flex flex-shrink-0 items-center px-4">
-                  <img
-                    className="h-8 w-auto"
-                    src={logo}
-                    alt="Your Company"
-                  />
+                  <img className="h-8 w-auto" src={logo} alt="Your Company" />
                 </div>
                 <div className="mt-5 h-0 flex-1 overflow-y-auto">
                   <nav className="space-y-1 px-2">
-                    {navigation.map((item) => (
+                    {navigation.map((item, index) => (
                       <Link
-                        key={item.name}
+                        key={index}
                         to={item.href}
+                        onClick={() => {
+                          setSidebarOpen(false);
+                          handleActive(index);
+                        }}
                         className={classNames(
                           item.current
                             ? "bg-indigo-800 text-white"
@@ -119,18 +126,15 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5">
           <div className="flex flex-shrink-0 items-center px-4">
-            <img
-              className="h-8 w-auto"
-              src={logo}
-              alt="Your Company"
-            />
+            <img className="h-8 w-auto" src={logo} alt="Your Company" />
           </div>
           <div className="mt-5 flex flex-1 flex-col">
             <nav className="flex-1 space-y-1 px-2 pb-4">
-              {navigation.map((item) => (
+              {navigation.map((item, index) => (
                 <Link
-                  key={item.name}
+                  key={index}
                   to={item.href}
+                  onClick={() => handleActive(index)}
                   className={classNames(
                     item.current
                       ? "bg-indigo-800 text-white"
