@@ -10,7 +10,6 @@ export default function Auth() {
       email: email,
       password: password,
     });
-    console.log(data)
     if (data.user !== null) {
       navigate("/dashboard");
     } else {
