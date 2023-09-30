@@ -75,7 +75,7 @@ export default function Payment() {
                   <div className="flex items-baseline text-xl overflow-hidden font-semibold text-black-600">
                     <span
                       className={classNames(
-                        statusStyles[item.stat.toLowerCase()], "p-2 rounded-3xl"
+                        statusStyles[item.stat.toLowerCase()], "px-6 py-1 rounded-3xl"
                       )}
                     >
                       {item.stat}
@@ -84,7 +84,7 @@ export default function Payment() {
                 </dd>
               ) : (
                 <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
-                  <div className="flex items-baseline text-xl overflow-hidden font-semibold text-black-600">
+                  <div className=" flex items-baseline text-xl overflow-hidden font-semibold text-black-600">
                     {item.stat}
                   </div>
                 </dd>
