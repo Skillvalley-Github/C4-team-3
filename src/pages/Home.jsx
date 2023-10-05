@@ -1,4 +1,4 @@
-import img1 from "../assets/images/full.jpg";
+import img1 from "../assets/images/bg.jpg";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -9,19 +9,31 @@ const navigation = [
   { name: "Features", href: "#feature" },
   { name: "Contact", href: "#contact" },
 ];
-
+const features = [
+  {
+    name: 'Sleek design',
+    description:
+      'The machined kettle has a smooth black finish and contemporary shape that stands apart from most plastic appliances.',
+  },
+  { name: 'Comfort handle', description: 'Shaped for steady pours and insulated to prevent burns.' },
+  {
+    name: 'One-button control',
+    description:
+      'The one button control has a digital readout for setting temperature and turning the kettle on and off.',
+  },
+  { name: 'Long spout', description: "Designed specifically for controlled pour-overs that don't slash or sputter." },
+]
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900">
+    <><div className="relative isolate overflow-hidden bg-gray-900">
       <img
         src={img1}
         alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover brightness-50"
-      />
-   
+        className="absolute inset-0 -z-10 h-full w-full object-cover brightness-50" />
+
       <div className="px-6 lg:px-8">
         <nav
           className="flex items-center justify-between pt-6"
@@ -108,7 +120,7 @@ export default function Home() {
           </Dialog.Panel>
         </Dialog>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
               Launching redefined way of.{' '}
               <Link to="https://nrega.nic.in/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white">
@@ -146,7 +158,58 @@ export default function Home() {
           </div>
         </div>
       </div>
-     
+
+
     </div>
+
+    <div className="bg-white">
+      <div className="mx-auto max-w-2xl py-24 px-4 sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-y-16 gap-x-8 lg:grid-cols-2">
+          <div>
+            <div className="border-b border-gray-200 pb-10">
+              <h2 className="font-medium text-gray-500">Machined Kettle</h2>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Elegant simplicity</p>
+            </div>
+
+            <dl className="mt-10 space-y-10">
+              {features.map((feature) => (
+                <div key={feature.name}>
+                  <dt className="text-sm font-medium text-gray-900">{feature.name}</dt>
+                  <dd className="mt-3 text-sm text-gray-500">{feature.description}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div>
+            <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100">
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-feature-09-main-detail.jpg"
+                alt="Black kettle with long pour spot and angled body on marble counter next to coffee mug and pour-over system."
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-8 lg:gap-8">
+              <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100">
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/product-feature-09-detail-01.jpg"
+                  alt="Detail of temperature setting button on kettle bass with digital degree readout."
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100">
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/product-feature-09-detail-02.jpg"
+                  alt="Kettle spout pouring boiling water into coffee grounds in pour-over mug."
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</>
   );
 }
