@@ -7,13 +7,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const userNavigation = [
-  { name: "Your Profile", href: "/profile" },
-  { name: "Sign out", href: "/" },
-];
 
-
-export const TopNavbar = ({setSidebarOpen}) => {
+export const TopNavbar = ({setSidebarOpen, userNavigation}) => {
   return (
     <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
           <button

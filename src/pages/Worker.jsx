@@ -1,61 +1,62 @@
-import { useParams, Navigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 // Importing all the components
+import { Sidebar, TopNavbar } from '../components'
 import {
-  Sidebar,
   Profile,
   Jobs,
   Payment,
   Attendance,
   Dashboard
-} from "../components/Worker";
-import { TopNavbar } from "../components/TopNavbar";
-import NotFound from "../components/NotFound";
-import supabase from "../api";
+} from '../components/Worker'
+import supabase from '../api'
+
+// Constants imports
+import { workerNavigation } from '../utils/sidelinks'
+import { workerTopNavigation } from '../utils/dashboard_toplink'
+
 
 export const Worker = () => {
-  const [worker, setWorkers] = useState({}); //worker state
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [worker, setWorkers] = useState({}) //worker state
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  const { view } = useParams();
+  const { workerView } = useParams()
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData () {
       // You can await here
-      const { data, error } = await supabase.from("worker").select();
-      setWorkers(data[0]);
+      const { data, error } = await supabase.from('worker').select()
+      setWorkers(data[0])
       // ...
     }
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <>
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <div className="flex flex-1 flex-col md:pl-64">
-        <TopNavbar setSidebarOpen={setSidebarOpen} />
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} navigation={workerNavigation} />
+      <div className='flex flex-1 flex-col md:pl-64'>
+        <TopNavbar setSidebarOpen={setSidebarOpen} userNavigation={workerTopNavigation} />
         <>
-          {view === "profile" ? (
+          {workerView === 'profile' ? (
             <Profile
               worker={worker}
               sidebarOpen={sidebarOpen}
               setSidebarOpen={setSidebarOpen}
             />
-          ) : view === "jobs" ? (
+          ) : workerView === 'jobs' ? (
             <Jobs />
-          ) : view === "payment" ? (
+          ) : workerView === 'payment' ? (
             <Payment />
-          ) : view === "dashboard" ? (
-            <Dashboard/>
-          ) : view === "payment" ? (
+          ) : workerView === 'payment' ? (
             <Payment />
-          ) : view === "attendance" ? (
+          ) : workerView === 'attendance' ? (
             <Attendance />
           ) : (
-            <Navigate replace to="/" />
+            <Dashboard />
           )}
         </>
       </div>
     </>
-  );
-};
+  )
+}

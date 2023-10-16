@@ -1,45 +1,25 @@
-export const workerLinks = [
-  {
-    name: 'Jobs',
-    icon: 'hammer-outline',
-    link: '/jobs'
-  },
-  {
-    name: 'Attendance',
-    icon: 'calendar-number-outline',
-    link: '/attendance'
-  },
-  {
-    name: 'Allocated Tasks',
-    icon: 'barbell-outline',
-    link: '/tasks'
-  },
-  {
-    name: 'Payment Slip',
-    icon: 'cash-outline',
-    link: '/payment'
-  }
-]
+import {
+  CalendarIcon,
+  CurrencyRupeeIcon,
+  FolderIcon,
+  HomeIcon,
+  UserGroupIcon,
+  UsersIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
-export const adminLinks = [
-  {
-    name: 'Add Job',
-    icon: 'hammer-outline',
-    link: '/addjobs'
-  },
-  {
-    name: 'Calendar',
-    icon: 'calendar-number-outline',
-    link: '/calendar'
-  },
-  {
-    name: 'Emplyees',
-    icon: 'barbell-outline',
-    link: '/employees'
-  },
-  {
-    name: 'Payout',
-    icon: 'cash-outline',
-    link: '/payout'
-  }
+export const workerNavigation = [
+  { name: "Dashboard", href: "/worker/dashboard", icon: HomeIcon, current: true },
+  { name: "Attendance", href: "/worker/attendance", icon: UsersIcon, current: false },
+  { name: "Jobs", href: "/worker/jobs", icon: FolderIcon, current: false },
+  { name: "Payment", href: "/worker/payment", icon: CalendarIcon, current: false },
+];
+
+
+export const adminNavigation = [
+  { name: "Dashboard", href: "/admin/dashboard", icon: HomeIcon, current: true },
+  { name: "Add Job", href: "/admin/addjob", icon: FolderIcon, current: false },
+  { name: "Attendance", href: "/admin/attendance", icon: CalendarIcon, current: false },
+  { name: "Employees", href: "/admin/employee", icon: UserGroupIcon, current: false },
+  { name: "Payout", href: "/admin/payout", icon: CurrencyRupeeIcon, current: false },
 ]
