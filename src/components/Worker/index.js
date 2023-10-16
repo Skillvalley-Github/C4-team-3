@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 import Tasks from "./Tasks";
 import Payment from "./Payment";
 import Attendance from "./Attendance";

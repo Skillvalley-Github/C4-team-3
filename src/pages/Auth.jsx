@@ -11,7 +11,7 @@ export default function Auth() {
       password: password,
     });
     if (data.user !== null) {
-      navigate("/dashboard");
+      navigate("/worker/dashboard");
     } else {
       console.log(error);
       alert(error.message);

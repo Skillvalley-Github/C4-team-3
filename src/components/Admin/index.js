@@ -1,9 +1,8 @@
-import Sidebar from "../Worker/Sidebar";
-import Addtasks from "./Addtasks";
-import Payment from "./Payment";
-import Editattendance from "./Editattendance";
-import Addjobs from "./Addjobs";
-import Profile from "../Worker/Profile";
-import Admindashboard from "./Admindashboard";
+import Dashboard from './Dashboard'
+import Attendance from './Attendance'
+import Employee from './Employee'
+import Payout from './Payout'
+import Addjobs from './Addjobs'
+import Profile from './Profile'
 
-export { Dashboard, Sidebar, Tasks, Payment, Attendance, Jobs, Profile};
+export { Dashboard, Attendance, Employee, Payout, Addjobs, Profile }
