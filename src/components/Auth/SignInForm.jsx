@@ -1,22 +1,21 @@
-import formImg from "../../assets/images/bg.jpg";
 import { useState } from "react";
-import useAuthStore from "../../api/store/useStore";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../api/store/store";
+import formImg from "../../assets/images/bg.jpg";
 
 export default function SignInForm() {
-  const { handleFormSubmit } = useAuthStore();
+  const navigate = useNavigate();
+  const { user, handleFormSubmit } = useAuthStore();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
-    userType: ""
+    userType: "worker"
   });
-  function forwardInfo(e) {
-    e.preventDefault();
-    handleFormSubmit(loginInfo);
-  }
+
   return (
     <>
-      <div className="flex min-h-full">
+      <div className="flex h-full">
         <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
@@ -32,7 +31,13 @@ export default function SignInForm() {
 
             <div className="mt-8">
               <div className="mt-6">
-                <form className="space-y-6" >
+                <form
+                  className="space-y-6"
+                  onSubmit={e => {
+                    e.preventDefault();
+                    handleFormSubmit(loginInfo.email, loginInfo.password, loginInfo.userType, navigate);
+                  }}
+                >
                   <div>
                     <label
                       htmlFor="email"
@@ -83,6 +88,48 @@ export default function SignInForm() {
                   </div>
 
                   <div className="flex items-center justify-between">
+                    <div className="text-sm font-medium text-gray-700">
+                      Login as
+                    </div>
+                    <div className="flex items-center gap-5">
+                      <div className="flex items-center">
+                        <input
+                          id="worker"
+                          name="worker"
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          value={loginInfo.userType}
+                          onChange={() => setLoginInfo({ userType: "worker" })}
+                          checked={loginInfo.userType === 'worker'}
+                        />
+                        <label
+                          htmlFor="worker"
+                          className="ml-2 block text-sm text-gray-900"
+                        >
+                          Worker
+                        </label>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          id="admin"
+                          name="admin"
+                          type="checkbox"
+                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          value={loginInfo.userType}
+                          onChange={() => setLoginInfo({ userType: "admin" })}
+                          checked={loginInfo.userType === 'admin'}
+                        />
+                        <label
+                          htmlFor="admin"
+                          className="ml-2 block text-sm text-gray-900"
+                        >
+                          Admin
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <input
                         id="remember-me"
@@ -111,7 +158,6 @@ export default function SignInForm() {
                   <div>
                     <button
                       type="submit"
-                      onClick={forwardInfo}
                       className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       Sign in
