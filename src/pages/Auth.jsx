@@ -1,26 +1,28 @@
-import supabase from "../api";
+import { Toaster } from 'sonner';
 import CommonNav from "../components/CommonNav";
 import SignInForm from "../components/Auth/SignInForm";
-import { useNavigate } from "react-router-dom";
+import useWindowHeight from '../utils/useWindowHeight';
 
 export default function Auth() {
-  const navigate = useNavigate();
-  const handleFormSubmit = async ({ email, password }) => {
-    let { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
-    if (data.user !== null) {
-      navigate("/worker/dashboard");
-    } else {
-      console.log(error);
-      alert(error.message);
-    }
-  };
+  const { height, isReady } = useWindowHeight();
+
   return (
     <>
-      <CommonNav />
-      <SignInForm handleFormSubmit={handleFormSubmit} />
+      <Toaster
+        duration={5000}
+        position='top-center'
+        richColors
+      />
+      <div
+        style={{
+          height: `${height}px`,
+          opacity: isReady ? 1 : 0,
+          transition: 'opacity 0.5s linear'
+        }}
+      >
+        <CommonNav />
+        <SignInForm />
+      </div>
     </>
   );
 }
