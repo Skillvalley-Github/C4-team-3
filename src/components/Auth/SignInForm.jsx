@@ -1,10 +1,14 @@
 import formImg from "../../assets/images/bg.jpg";
 import { useState } from "react";
+import useAuthStore from "../../api/store/useStore";
 
-export default function SignInForm({ handleFormSubmit }) {
+export default function SignInForm() {
+  const { handleFormSubmit } = useAuthStore();
+
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
+    userType: ""
   });
   function forwardInfo(e) {
     e.preventDefault();
@@ -28,7 +32,7 @@ export default function SignInForm({ handleFormSubmit }) {
 
             <div className="mt-8">
               <div className="mt-6">
-                <form className="space-y-6">
+                <form className="space-y-6" >
                   <div>
                     <label
                       htmlFor="email"
