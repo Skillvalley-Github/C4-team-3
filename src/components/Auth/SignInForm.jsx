@@ -5,7 +5,7 @@ import formImg from "../../assets/images/bg.jpg";
 
 export default function SignInForm() {
   const navigate = useNavigate();
-  const { user, handleFormSubmit } = useAuthStore();
+  const { user, loginUser } = useAuthStore();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -15,7 +15,7 @@ export default function SignInForm() {
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="flex min-h-full">
         <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
@@ -35,7 +35,7 @@ export default function SignInForm() {
                   className="space-y-6"
                   onSubmit={e => {
                     e.preventDefault();
-                    handleFormSubmit(loginInfo.email, loginInfo.password, loginInfo.userType, navigate);
+                    loginUser(loginInfo.email, loginInfo.password, loginInfo.userType, navigate);
                   }}
                 >
                   <div>

@@ -1,21 +1,9 @@
 import { Worker, Auth, Home } from './pages'
 import { Routes, Route } from 'react-router-dom'
-import supabase from './api'
-import { useState, useEffect } from 'react'
 import Protected from './components/Protected'
 import { Admin } from './pages/Admin'
 
 function App () {
-  const [jobs, setJobs] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
-
-  useEffect(() => {
-    getJobs()
-  }, [])
-  async function getJobs () {
-    const { data } = await supabase.from('jobs').select()
-    setJobs(data)
-  }
   return (
     <div className='w-full h-full'>
       <Routes>
@@ -26,7 +14,7 @@ function App () {
         <Route
           path='/admin'
           element={
-            <Protected isSignedIn={isLoggedIn}>
+            <Protected >
               <Admin />
             </Protected>
           }
@@ -34,7 +22,7 @@ function App () {
           <Route
             path='/admin/:adminView'
             element={
-              <Protected isSignedIn={isLoggedIn}>
+              <Protected >
                 <Admin />
               </Protected>
             }
@@ -43,7 +31,7 @@ function App () {
         <Route
           path='/worker'
           element={
-            <Protected isSignedIn={isLoggedIn}>
+            <Protected >
               <Worker />
             </Protected>
           }
@@ -51,7 +39,7 @@ function App () {
           <Route
             path='/worker/:workerView'
             element={
-              <Protected isSignedIn={isLoggedIn}>
+              <Protected >
                 <Worker />
               </Protected>
             }

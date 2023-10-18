@@ -9,7 +9,7 @@ export default function Auth() {
   return (
     <>
       <Toaster
-        duration={5000}
+        duration={500}
         position='top-center'
         richColors
       />

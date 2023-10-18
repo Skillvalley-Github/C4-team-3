@@ -1,21 +1,10 @@
-import { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Fragment } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 import logo from '../assets/images/logo.png'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-function classNames (...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Sidebar ({ sidebarOpen, setSidebarOpen, navigation }) {
-  const [active, setActive] = useState(0)
-
-  function handleActive (index) {
-    navigation[active].current = false
-    navigation[index].current = true
-    setActive(index)
-  }
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -76,26 +65,25 @@ export default function Sidebar ({ sidebarOpen, setSidebarOpen, navigation }) {
                 <div className='mt-5 h-0 flex-1 overflow-y-auto'>
                   <nav className='space-y-1 px-2'>
                     {navigation.map((item, index) => (
-                      <Link
+                      <NavLink
                         key={index}
                         to={item.href}
-                        onClick={() => {
-                          setSidebarOpen(false)
-                          handleActive(index)
-                        }}
-                        className={classNames(
-                          item.current
-                            ? 'bg-indigo-800 text-white'
-                            : 'text-indigo-100 hover:bg-indigo-600',
-                          'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                        )}
+                        className={({ isActive }) =>
+                          [
+                            isActive
+                              ? 'bg-indigo-800 text-white'
+                              : 'text-indigo-100 hover:bg-indigo-600',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                          ].join(' ')
+                        }
+                        onClick={() => setSidebarOpen(false)}
                       >
                         <item.icon
                           className='mr-4 h-6 w-6 flex-shrink-0 text-indigo-300'
                           aria-hidden='true'
                         />
                         {item.name}
-                      </Link>
+                      </NavLink>
                     ))}
                   </nav>
                 </div>
@@ -118,23 +106,24 @@ export default function Sidebar ({ sidebarOpen, setSidebarOpen, navigation }) {
           <div className='mt-5 flex flex-1 flex-col'>
             <nav className='flex-1 space-y-1 px-2 pb-4'>
               {navigation.map((item, index) => (
-                <Link
+                <NavLink
                   key={index}
                   to={item.href}
-                  onClick={() => handleActive(index)}
-                  className={classNames(
-                    item.current
-                      ? 'bg-indigo-800 text-white'
-                      : 'text-indigo-100 hover:bg-indigo-600',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                  )}
+                  className={({ isActive }) =>
+                    [
+                      isActive
+                        ? 'bg-indigo-800 text-white'
+                        : 'text-indigo-100 hover:bg-indigo-600',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                    ].join(' ')
+                  }
                 >
                   <item.icon
                     className='mr-3 h-6 w-6 flex-shrink-0 text-indigo-300'
                     aria-hidden='true'
                   />
                   {item.name}
-                </Link>
+                </NavLink>
               ))}
             </nav>
           </div>
