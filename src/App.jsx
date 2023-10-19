@@ -1,65 +1,89 @@
-import { Worker, Auth, Home } from './pages'
-import { Routes, Route } from 'react-router-dom'
-import supabase from './api'
-import { useState, useEffect } from 'react'
-import Protected from './components/Protected'
-import { Admin } from './pages/Admin'
+import { Worker, Auth, Home, Admin } from './pages'
+import { authLoader, workerLoader, adminLoader } from './routes/loaders'
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+  Routes
+} from 'react-router-dom'
+// Admin Components
+import {
+  AdminDashboard,
+  AdminAttendance,
+  Addjobs,
+  Employee,
+  Payout,
+  AdminProfile
+} from './components/Admin'
 
-function App () {
-  const [jobs, setJobs] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+// Worker Components
+import {
+  Profile,
+  Jobs,
+  Payment,
+  Attendance,
+  Dashboard
+} from './components/Worker'
 
-  useEffect(() => {
-    getJobs()
-  }, [])
-  async function getJobs () {
-    const { data } = await supabase.from('jobs').select()
-    setJobs(data)
+const router = createBrowserRouter([
+  {
+    path: '/',
+    Component: Home
+  },
+  {
+    path: '/auth',
+    Component: Auth
+  },
+  {
+    path: '/worker',
+    Component: Worker,
+    loader: workerLoader,
+    children: [
+      { path: 'dashboard', Component: Dashboard, loader: authLoader },
+      { path: 'profile', Component: Profile, loader: authLoader },
+      { path: 'jobs', Component: Jobs, loader: authLoader },
+      { path: 'payment', Component: Payment, loader: authLoader },
+      { path: 'attendance', Component: Attendance, loader: authLoader },
+      {
+        path: '*',
+        Component: Dashboard,
+        loader: () => {
+          return redirect('/worker/dashboard')
+        }
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    Component: Admin,
+    loader: adminLoader,
+    children: [
+      { path: 'dashboard', Component: AdminDashboard, loader: authLoader },
+      { path: 'addjob', Component: Addjobs, loader: authLoader },
+      { path: 'attendance', Component: AdminAttendance, loader: authLoader },
+      { path: 'employee', Component: Employee, loader: authLoader },
+      { path: 'payout', Component: Payout, loader: authLoader },
+      { path: 'profile', Component: AdminProfile, loader: authLoader },
+      {
+        path: '*',
+        Component: Dashboard,
+        loader: () => {
+          return redirect('/admin/dashboard')
+        }
+      }
+    ]
+  },
+  {
+    path: '*',
+    Component: Root,
+    loader: () => {
+      return redirect('/')
+    }
   }
-  return (
-    <div className='w-full h-full'>
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/auth' element={<Auth />} />
-        {/* Here the dashboard routes are protected */}
-
-        <Route
-          path='/admin'
-          element={
-            <Protected isSignedIn={isLoggedIn}>
-              <Admin />
-            </Protected>
-          }
-        >
-          <Route
-            path='/admin/:adminView'
-            element={
-              <Protected isSignedIn={isLoggedIn}>
-                <Admin />
-              </Protected>
-            }
-          />
-        </Route>
-        <Route
-          path='/worker'
-          element={
-            <Protected isSignedIn={isLoggedIn}>
-              <Worker />
-            </Protected>
-          }
-        >
-          <Route
-            path='/worker/:workerView'
-            element={
-              <Protected isSignedIn={isLoggedIn}>
-                <Worker />
-              </Protected>
-            }
-          />
-        </Route>
-      </Routes>
-    </div>
-  )
+])
+export default function App () {
+  return <RouterProvider router={router} />
 }
-
-export default App
+function Root () {
+  return <Routes></Routes>
+}

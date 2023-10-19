@@ -4,6 +4,8 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.png'
+import { useAuthStore } from '../api/store'
+import { useNavigate } from 'react-router-dom'
 
 const navigation = [
   { name: 'Features', href: '#feature' },
@@ -32,6 +34,8 @@ const features = [
 ]
 
 export default function Home () {
+  const navigate = useNavigate()
+  const { checkSession } = useAuthStore()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -76,12 +80,12 @@ export default function Home () {
               ))}
             </div>
             <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-              <Link
-                to='/auth'
+              <button
+                onClick={() => checkSession(navigate)}
                 className='text-sm font-semibold leading-6 text-white'
               >
                 Log in <span aria-hidden='true'>&rarr;</span>
-              </Link>
+              </button>
             </div>
           </nav>
           <Dialog as='div' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -117,12 +121,15 @@ export default function Home () {
                     ))}
                   </div>
                   <div className='py-6'>
-                    <Link
-                      to='/auth'
+                    <button
+                      onClick={() => {
+                        checkSession(navigate)
+                        setMobileMenuOpen(false)
+                      }}
                       className='-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-white hover:bg-gray-400/10'
                     >
                       Log in
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
