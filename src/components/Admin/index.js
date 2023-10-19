@@ -1,8 +1,8 @@
-import Dashboard from './Dashboard'
-import Attendance from './Attendance'
+import AdminDashboard from './AdminDashboard'
+import AdminAttendance from './AdminAttendance'
 import Employee from './Employee'
 import Payout from './Payout'
 import Addjobs from './Addjobs'
-import Profile from './Profile'
+import AdminProfile from './AdminProfile'
 
-export { Dashboard, Attendance, Employee, Payout, Addjobs, Profile }
+export { AdminDashboard, AdminAttendance, Employee, Payout, Addjobs, AdminProfile }

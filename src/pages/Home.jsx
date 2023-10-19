@@ -4,7 +4,6 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.png'
-import { Toaster } from 'sonner'
 import { useAuthStore } from '../api/store'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,7 +40,6 @@ export default function Home () {
 
   return (
     <>
-      <Toaster duration={10000} position='top-center' richColors />
       <div className='relative isolate overflow-hidden bg-gray-900'>
         <img
           src={img1}

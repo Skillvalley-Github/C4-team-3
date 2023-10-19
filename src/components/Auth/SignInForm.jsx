@@ -5,7 +5,7 @@ import formImg from "../../assets/images/bg.jpg";
 
 export default function SignInForm() {
   const navigate = useNavigate();
-  const { user, loginUser } = useAuthStore();
+  const { loginUser } = useAuthStore();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -98,8 +98,8 @@ export default function SignInForm() {
                           name="worker"
                           type="checkbox"
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          value={loginInfo.userType}
-                          onChange={() => setLoginInfo({ userType: "worker" })}
+                          value='worker'
+                          onChange={(e) => setLoginInfo({...loginInfo, userType: e.target.value })}
                           checked={loginInfo.userType === 'worker'}
                         />
                         <label
@@ -115,8 +115,8 @@ export default function SignInForm() {
                           name="admin"
                           type="checkbox"
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          value={loginInfo.userType}
-                          onChange={() => setLoginInfo({ userType: "admin" })}
+                          value='admin'
+                          onChange={(e) => setLoginInfo({...loginInfo, userType: e.target.value })}
                           checked={loginInfo.userType === 'admin'}
                         />
                         <label

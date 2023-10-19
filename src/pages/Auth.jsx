@@ -1,4 +1,3 @@
-import { Toaster } from 'sonner';
 import CommonNav from "../components/CommonNav";
 import SignInForm from "../components/Auth/SignInForm";
 import useWindowHeight from '../utils/useWindowHeight';
@@ -8,11 +7,6 @@ export default function Auth() {
 
   return (
     <>
-      <Toaster
-        duration={500}
-        position='top-center'
-        richColors
-      />
       <div
         style={{
           height: `${height}px`,
