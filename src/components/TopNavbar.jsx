@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
@@ -9,6 +9,7 @@ function classNames (...classes) {
 }
 
 export const TopNavbar = ({ setSidebarOpen, userNavigation }) => {
+  const { pathname } = useLocation()
   const { logoutUser } = useAuthStore()
   return (
     <div className='sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow'>
@@ -52,7 +53,15 @@ export const TopNavbar = ({ setSidebarOpen, userNavigation }) => {
           {/* Profile dropdown */}
           <Menu as='div' className='relative ml-3'>
             <div>
-              <Menu.Button className='flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+              <Menu.Button
+                className={classNames(
+                  pathname === '/worker/profile' ||
+                    pathname === '/admin/profile'
+                    ? 'outline-none ring-2 ring-indigo-500 ring-offset-2'
+                    : '',
+                  'flex max-w-xs items-center rounded-full bg-white text-sm'
+                )}
+              >
                 <span className='sr-only'>Open user menu</span>
                 <img
                   className='h-8 w-8 rounded-full'
